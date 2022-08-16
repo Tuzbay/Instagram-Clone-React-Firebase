@@ -70,7 +70,9 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot(snapshot => {
+    db
+    .collection("posts")
+    .onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id,
         post: doc.data()
@@ -198,19 +200,22 @@ function App() {
         )}
       </div>
 
-
-      <h1>Hello From Planet Earth!</h1>
+      <div className='app__posts'>
 
       {
         posts.map(({id, post}) => (
           <Post
           key={id}
+          postId={id}
+          user={user}
           username={post.username}
           caption={post.caption}
           imageUrl={post.imageUrl}
           />
         ))
       }
+
+      </div>
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName}/>
