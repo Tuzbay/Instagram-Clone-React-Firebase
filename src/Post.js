@@ -42,20 +42,26 @@ function Post({ postId, user, username, caption, imageUrl }) {
 
   return (
     <div className='post'>
+      <div className='post__headerdot'>
         <div className="post__header">
-            <Avatar 
+            <Avatar
             className="post__avatar"
             alt={username.toUpperCase()}
             src="/static/images/avatar/1.jpg"
             />
-            <h3>{username}</h3>
+            <h4>{username}</h4>
         </div>
-
+        <div>
+          <h3>...</h3>
+        </div>
+      </div>
         <img
         className='post__image'
         src= {imageUrl}
         alt=''>
         </img>
+
+        {/* Beğenme ikonları buraya */}
 
         <h4
         className='post__text'>
@@ -71,7 +77,8 @@ function Post({ postId, user, username, caption, imageUrl }) {
 
         </div>
 
-        <form className='post__commentBox'>
+        {user && (
+          <form className='post__commentBox'>
           <input
           className='post__input'
           type="text"
@@ -88,6 +95,9 @@ function Post({ postId, user, username, caption, imageUrl }) {
 
           </button>
         </form>
+        )}
+
+        
 
     </div>
   )
