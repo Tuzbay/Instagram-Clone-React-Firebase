@@ -2,6 +2,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getStorage } from "firebase/storage";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -23,7 +24,7 @@ const firebaseConfig = {
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
-//   const storage = firebase.storage();
+  const storage = getStorage();
 
 //   export default db;
-  export { db, auth, provider }
+  export { db, auth, provider, storage }
